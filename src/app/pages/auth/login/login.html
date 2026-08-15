@@ -1,0 +1,35 @@
+<mat-card class="auth-card">
+  <mat-card-content>
+    <div class="auth-header">
+      <h1>Welcome back</h1>
+      <p>Sign in to continue</p>
+    </div>
+
+    <form class="auth-form" novalidate>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="you@example.com" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Enter your password" required />
+      </mat-form-field>
+
+      <div class="auth-row">
+        <label class="auth-checkbox">
+          <input type="checkbox" />
+          <span>Remember me</span>
+        </label>
+        <a class="auth-link" routerLink="/forgot-password">Forgot password?</a>
+      </div>
+
+      <button mat-flat-button color="primary" class="auth-submit" type="submit">Sign in</button>
+
+      <div class="auth-links">
+        <span>Need an account?</span>
+        <a class="auth-link" routerLink="/register">Create account</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

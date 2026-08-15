@@ -1,0 +1,37 @@
+<mat-card class="auth-card">
+  <mat-card-content>
+    <div class="auth-header">
+      <h1>Create account</h1>
+      <p>Start your free account today</p>
+    </div>
+
+    <form class="auth-form" novalidate>
+      <mat-form-field appearance="outline">
+        <mat-label>Full name</mat-label>
+        <input matInput type="text" placeholder="John Doe" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="you@example.com" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Create a password" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm password</mat-label>
+        <input matInput type="password" placeholder="Repeat your password" required />
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" class="auth-submit" type="submit">Create account</button>
+
+      <div class="auth-links">
+        <span>Already registered?</span>
+        <a class="auth-link" routerLink="/login">Sign in</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
