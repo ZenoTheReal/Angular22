@@ -1,33 +1,58 @@
 <mat-card class="dashboard-card">
-    <mat-card-header>
-        <mat-card-title>Dashboard</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <table mat-table [dataSource]="dataSource" matSort  class="dashboard-table">
-            <ng-container matColumnDef="eid">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.eid}} </td>
-            </ng-container>
+  <mat-card-header class="dashboard-header">
+    <div>
+      <p class="eyebrow">Overview</p>
+      <mat-card-title>Dashboard</mat-card-title>
+    </div>
+  </mat-card-header>
 
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header > Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="temperature">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Temperature </th>
-                <td mat-cell *matCellDef="let element"> {{element.temperature | formatter}} </td>
-            </ng-container>
+  <mat-card-content>
+    <div class="dashboard-summary">
+      <div class="summary-item">
+        <span class="label">Sensors</span>
+        <strong>4</strong>
+      </div>
+      <div class="summary-item">
+        <span class="label">Avg. temp</span>
+        <strong>24.8°C</strong>
+      </div>
+      <div class="summary-item">
+        <span class="label">Avg. humidity</span>
+        <strong>55%</strong>
+      </div>
+    </div>
 
-            <ng-container matColumnDef="humidity">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Humidity </th>
-                <td mat-cell *matCellDef="let element"> {{element.humidity}} </td>
-            </ng-container>
+    <div class="table-wrap">
+      <table mat-table [dataSource]="dataSource" matSort class="dashboard-table">
+        <ng-container matColumnDef="eid">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.eid }}</td>
+        </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row appHighlighter [humidity]="row.humidity" *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
 
-          <mat-paginator [pageSize]="10"[pageSizeOptions]="[3, 10, 25, 100]" aria-label="Select page"></mat-paginator>
-    </mat-card-content>
+        <ng-container matColumnDef="temperature">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Temperature</th>
+          <td mat-cell *matCellDef="let element">{{ element.temperature | formatter }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="humidity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Humidity</th>
+          <td mat-cell *matCellDef="let element">{{ element.humidity }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row appHighlighter [humidity]="row.humidity" *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [pageSize]="10"
+      [pageSizeOptions]="[3, 10, 25, 100]"
+      aria-label="Select page"
+    ></mat-paginator>
+  </mat-card-content>
 </mat-card>

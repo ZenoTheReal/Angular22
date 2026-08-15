@@ -1,21 +1,30 @@
-<mat-toolbar class="app-header">
-  <button
-    type="button"
-    mat-icon-button
-    aria-label="Open navigation menu"
-    [attr.aria-expanded]="isMenuOpen()"
-    (click)="toggleMenu()"
-    class="menu-toggle"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
+<div class="header-wrapper">
+  <mat-toolbar class="app-header">
+    <button
+      type="button"
+      mat-icon-button
+      aria-label="Open navigation menu"
+      [attr.aria-expanded]="isMenuOpen()"
+      (click)="toggleMenu()"
+      class="menu-toggle"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
 
-  <span class="app-brand">Angular22</span>
+    <span class="app-brand">Angular22</span>
 
-  <nav class="main-nav" [class.is-open]="isMenuOpen()" aria-label="Main navigation">
+    <nav class="main-nav desktop-nav" aria-label="Main navigation">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/settings" routerLinkActive="active">Settings</a>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/register" routerLinkActive="active">Register</a>
+    </nav>
+  </mat-toolbar>
+
+  <nav class="main-nav mobile-nav" [class.mobile-open]="isMenuOpen()" aria-label="Main navigation">
     <a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">Dashboard</a>
     <a routerLink="/settings" routerLinkActive="active" (click)="closeMenu()">Settings</a>
     <a routerLink="/login" routerLinkActive="active" (click)="closeMenu()">Login</a>
     <a routerLink="/register" routerLinkActive="active" (click)="closeMenu()">Register</a>
   </nav>
-</mat-toolbar>
+</div>

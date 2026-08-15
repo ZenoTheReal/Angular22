@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.portal-shell {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding: 20px 16px 32px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .portal-shell {
+    padding: 16px 12px 24px;
+  }
+}

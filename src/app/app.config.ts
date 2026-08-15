@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, isDevMode } from '@angular/core';
-import { provideRouter, withViewTransitions } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay, withHttpTransferCacheOptions } from '@angular/platform-browser';
@@ -9,7 +9,7 @@ import { provideHttpClient } from '@angular/common/http';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes, withViewTransitions()),
+    provideRouter(routes, withViewTransitions(), withComponentInputBinding()),
     provideHttpClient(),
     provideClientHydration(withEventReplay(), withHttpTransferCacheOptions({ includePostRequests: false })),
     provideServiceWorker('ngsw-worker.js', {
