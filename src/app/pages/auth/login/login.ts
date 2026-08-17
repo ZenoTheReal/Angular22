@@ -7,16 +7,16 @@ import { MatInputModule } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { login } from '../../../../models/auth.model';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { Test } from "../../shared/test/test";
 
 type FormModel<T> = {
   [K in keyof T]: FormControl<T[K] | null>;
 };
 
-
 @Component({
   selector: 'app-login',
   imports: [RouterLink, MatCardModule, ReactiveFormsModule,
-    MatFormFieldModule, MatInputModule, MatButtonModule],
+    MatFormFieldModule, MatInputModule, MatButtonModule, Test],
   templateUrl: './login.html',
   styleUrl: '../auth.scss',
 })
@@ -42,6 +42,12 @@ export class Login implements OnInit {
     this.loginformGroup.markAllAsTouched();
     if (this.loginformGroup.valid) {
       this.router.navigate(['/dashboard'], { queryParams: { user: this.loginformGroup.value.email } })
+    }
+  }
+
+  resetForm(event:{clear:boolean}){
+    if(event.clear){
+      this.loginformGroup.reset();
     }
   }
 }

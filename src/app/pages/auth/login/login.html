@@ -31,5 +31,6 @@
         <a class="auth-link" routerLink="/register">Create account</a>
       </div>
     </form>
+    <app-test [data]="loginformGroup.value.email" ($clear)="resetForm($event)"></app-test>
   </mat-card-content>
 </mat-card>
