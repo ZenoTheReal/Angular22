@@ -5,28 +5,40 @@
       <p>Start your free account today</p>
     </div>
 
-    <form class="auth-form" novalidate>
-      <mat-form-field appearance="outline">
+    <form class="auth-form" novalidate (submit)="submit($event)">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
         <mat-label>Full name</mat-label>
-        <input matInput type="text" placeholder="John Doe" required />
+        <input matInput type="text" [formField]="registerForm.fullName" placeholder="John Doe" />
+        @for (error of registerForm.fullName().errors(); track error.kind) {
+        <mat-error>{{ error.message }}</mat-error>
+        }
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
         <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="you@example.com" required />
+        <input matInput type="email" [formField]="registerForm.email" placeholder="you@example.com" />
+        @for (error of registerForm.email().errors(); track error.kind) {
+        <mat-error>{{ error.message }}</mat-error>
+        }
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
         <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Create a password" required />
+        <input matInput type="password" [formField]="registerForm.password" placeholder="Create a password" />
+        @for (error of registerForm.password().errors(); track error.kind) {
+        <mat-error>{{ error.message }}</mat-error>
+        }
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
         <mat-label>Confirm password</mat-label>
-        <input matInput type="password" placeholder="Repeat your password" required />
+        <input matInput type="password" [formField]="registerForm.confirmPassword" placeholder="Repeat your password" />
+        @for (error of registerForm.confirmPassword().errors(); track error.kind) {
+        <mat-error>{{ error.message }}</mat-error>
+        }
       </mat-form-field>
 
-      <button mat-flat-button color="primary" class="auth-submit" type="submit">Create account</button>
+      <button mat-flat-button color="primary" class="auth-submit" [disabled]="registerForm().invalid()" type="submit">Create account</button>
 
       <div class="auth-links">
         <span>Already registered?</span>
