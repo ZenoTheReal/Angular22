@@ -5,15 +5,15 @@
       <p>Sign in to continue</p>
     </div>
 
-    <form class="auth-form" novalidate>
+    <form class="auth-form" [formGroup]="loginformGroup" novalidate (ngSubmit)="submit()">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="you@example.com" required />
+        <input matInput formControlName="email" type="email" placeholder="you@example.com" required />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Enter your password" required />
+        <input matInput type="password" formControlName="password" placeholder="Enter your password" required />
       </mat-form-field>
 
       <div class="auth-row">
